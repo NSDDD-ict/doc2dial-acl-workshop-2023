@@ -1,0 +1,17 @@
+{
+	"framework": "pytorch",
+	"task": "document-grounded-dialog-retrieval",
+	"pipeline": {
+	  "type": "document-grounded-dialog-retrieval"
+	},
+	"model": {
+	  "type": "doc2bot",
+	  "task": "document-grounded-dialog-retrieval",
+	  "model_dir": "",
+	  "device": "cpu",
+	  "lazy_load": true,
+	  "seed": 999
+	},
+	"query_sequence_length": 512,
+	"context_sequence_length": 512
+  }
