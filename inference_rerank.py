@@ -95,7 +95,7 @@ def main():
                 ptr += 1
                 passage_to_id[every_passage] = str(ptr)
 
-    file_in = open('./DAMO_ConvAI/nlp_convai_retrieval_pretrain/evaluate_result_best.json', 'r')
+    file_in = open('./model/retrieval/nlp_convai_retrieval_pretrain_infoxlm_baseline_v1/evaluate_result.json', 'r')
     retrieval_result = json.load(file_in)['outputs']
     input_list = []
     passages_list = []
@@ -122,10 +122,8 @@ def main():
         positive_pids_list.append(str([]))
     evaluate_dataset = {'input': input_list, 'id': ids_list, 'passages': passages_list, 'output': output_list,
                         'positive_pids': positive_pids_list}
-    model_ids = ['_7', '_8', '_9', '_10', '_11',
-                 '_12', '_13', '_14', '_15', '_16',
-                 '_17', '_18', '_19', '_20', '_21',
-                 '_22', '_23']
+    model_ids = ['_14', '_10', '_11', '_12', '_13', '_15',
+                '_16', '_17', '_18', '_19', '_21', ]
     for model_id in model_ids:
         model_dir = f'./model/rerank/output_rerank_model/{model_id}'
         model_configuration = {

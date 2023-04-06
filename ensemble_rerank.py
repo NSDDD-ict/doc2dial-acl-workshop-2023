@@ -50,8 +50,8 @@ def dragpassage_trans_rerank():
 
     print(f"all_train_dataset{len(all_train_dataset)}")
 
-    with open('/model/rerank//rerank_statistics.json', 'w') as f_out:
-        f_out.write(json.dumps(statistics_final, ensure_ascii=False, indent=4))
+    # with open('/model/rerank//rerank_statistics.json', 'w') as f_out:
+    #     f_out.write(json.dumps(statistics_final, ensure_ascii=False, indent=4))
     with open('./model/rerank/rerank_output.jsonl', 'w') as f_out:
         for every_dict in all_train_dataset['14']:
             f_out.write(json.dumps(every_dict) + '\n')

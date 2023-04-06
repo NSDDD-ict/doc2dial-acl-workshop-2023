@@ -573,14 +573,14 @@ if __name__ == '__main__':
                         help="gpu id to use")
     parser.add_argument('--langs', default=['Vi', 'Fr', ], type=str, nargs='+', required=False,
                         help="language of the task")#['Vi', 'Fr', 'En2Vi', 'En2Fr', 'Cn2Vi', 'Cn2Fr']
-    parser.add_argument('--cache_dir', default='/root/autodl-tmp/generation', type=str, required=False,
+    parser.add_argument('--cache_dir', default='./model', type=str, required=False,
                         help="cache directory") # '/root/autodl-tmp/generation'  /root/autodl-tmp /workspace/chengs18/doc2dial/generation
-    parser.add_argument('--pretrain_model_dir', default='token_type_embedding', type=str,required=False,
+    parser.add_argument('--pretrain_model_dir', default='generation', type=str,required=False,
                         help="pretrain model directory")
-    parser.add_argument('--output_dir', default='no_pretrain', type=str, required=False, help="output directory")
-    parser.add_argument('--model_name', default='./mbart-large-50', type=str, required=False,
+    parser.add_argument('--output_dir', default='generation', type=str, required=False, help="output directory")
+    parser.add_argument('--model_name', default='./model/generation/mbart-large-50', type=str, required=False,
                         help="model name used in huggingface")
-    parser.add_argument('--pretrain_on_langs', default=None, type=str, nargs='+', required=False,
+    parser.add_argument('--pretrain_on_langs', default=['Vi', 'Fr', 'En2Vi', 'En2Fr'], type=str, nargs='+', required=False,
                         help="pretrain model name")  #  ['En', 'Zh']  ['Vi', 'Fr', 'En', 'Zh'] ['Vi', 'Fr', 'En2Vi', 'En2Fr'] ['En', 'Zh', 'En2Vi', 'En2Fr', 'Cn2Vi', 'Cn2Fr']
     parser.add_argument('--epochs', default=20, type=int, required=False, help="number of epochs")
     parser.add_argument('--batch_size', default=16, type=int, required=False, help="batch size")
@@ -596,7 +596,7 @@ if __name__ == '__main__':
     parser.add_argument('--dropout', default=0.1, type=float, required=False, help="dropout rate")
     parser.add_argument('--do_pretrain', default=False, type=bool, required=False, help="whether to do pretrain")
     parser.add_argument('--noisy_rate', default=0, type=float, required=False, help="noisy rate for pretrain")
-    parser.add_argument('--do_drop', default=False, type=bool, required=False, help="whether to use R-drop")
+    parser.add_argument('--do_drop', default=True, type=bool, required=False, help="whether to use R-drop")
     parser.add_argument('--use_type_embeddings', default=False, type=bool, required=False, help="whether to use type embeddings")
     parser.add_argument('--use_fid', default=False, type=bool, required=False, help="whether to use FID")
     parser.add_argument('--num_passages', default=2, type=int, required=False, help="number of passages")

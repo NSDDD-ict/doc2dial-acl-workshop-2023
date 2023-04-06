@@ -13,15 +13,15 @@ if __name__ == '__main__':
     parser.add_argument('--batch_size', default=32, type=int, required=False, help="batch size")
     parser.add_argument('--model_nums', default=1, type=int, required=False, help="number of models to infer, only "
                                                                                   "langs > 2 is valid")
-    parser.add_argument('--cache_dir', default='/root/autodl-tmp/generation', type=str, required=False,
+    parser.add_argument('--cache_dir', default='./model', type=str, required=False,
                         help="cache directory")  # '../DAMO-ConvAI/acl23doc2dial'  /root/autodl-tmp
-    parser.add_argument('--output_dir', default='ViFr_0.05_drop_0.02', type=str,  # ViFr_0.05_drop_0.02
+    parser.add_argument('--output_dir', default='generation', type=str,  # ViFr_0.05_drop_0.02
                         required=False,
                         help="pretrain model directory")
-    parser.add_argument('--pretrain_model_dir', default='ViFr_0.05_drop_0.02', type=str, # ViFr_0.05_drop_0.02
+    parser.add_argument('--pretrain_model_dir', default='generation', type=str, # ViFr_0.05_drop_0.02
                         required=False,
                         help="pretrain model directory")
-    parser.add_argument('--model_name', default='./mbart-large-50', type=str, required=False,
+    parser.add_argument('--model_name', default='./model/generation/mbart-large-50', type=str, required=False,
                         help="model name used in huggingface")
     parser.add_argument('--ckpt_name', default='Vi_Fr_pretrain_on_Vi_Fr_En2Vi_En2Fr_finetuned_model.bin', type=str, required=False, help='model name to use') # Vi_Fr_pretrain_on_Vi_Fr_En2Vi_En2Fr_finetuned_model.bin
     parser.add_argument('--Fr_ckpt_name', default='Fr_pretrain_on_En_Zh_finetuned_model.bin', type=str, required=False, help='Fr model name to use')
@@ -46,7 +46,7 @@ if __name__ == '__main__':
     index = []
     assert args.model_nums in [1, 2], \
         "This model number is not in the target model number list"
-    with open('rerank_output.jsonl') as f:
+    with open('./model/rerank/rerank_output.jsonl') as f:
         for line in f.readlines():
 
             sample = json.loads(line)
@@ -90,7 +90,7 @@ if __name__ == '__main__':
         with open(f'{cache_path}/evaluate_result.json') as f:
             predictions = json.load(f)['outputs']
 
-        with open('1model_outputStandardFileBaseline.json', 'w') as f:
+        with open('model_outputStandardFileBaseline.json', 'w') as f:
             for query, prediction in zip(eval_dataset, predictions):
                 f.write(json.dumps({
                     'query': query['query'],
